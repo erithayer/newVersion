@@ -1,0 +1,72 @@
+/* @font-face {
+    font-family: 'ARMGUARD';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ARMGUARD'), url('../../Fonts/ARMGUARD.TTF') ;
+  }
+
+.Header-container{
+    
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    width: 100vw;
+    background-color: rgb(68,70,90);
+    color: rgb(255, 255, 255);
+    align-items: center;
+}
+.Header-container .Logo{
+    height: 100%;
+}
+
+.Header-container .Logo span{
+    height: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    
+    height: 60px;
+    object-fit: cover;
+}
+.Header-container .Logo .erithayer {
+    display: flex;
+    object-fit: contain;
+    height: 100%;
+    justify-content: center;
+}
+.Header-container .Logo .erithayer img{
+    display: flex;
+    height: 100%;
+    
+}
+.Header-container .Logo a:link {
+    text-decoration: none;
+}
+.Header-container .Links {
+    margin: auto 8rem;
+    text-decoration: none;
+
+}
+.Header-container .Links a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin: 2rem;
+}
+.Header-container .Links a:hover{
+   text-decoration: underline;
+}
+.Header-container .toTop{
+    background: gray;
+    position: absolute sticky;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 60px;
+}
+@media screen and (max-width: 800px) {
+    .Header-container{
+        height: 80px;
+    }
+} */
