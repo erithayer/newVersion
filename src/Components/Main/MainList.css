@@ -23,8 +23,9 @@ body{
 }
 .Container{
     display: flex;
+    flex-direction: column;
     justify-content: center; 
-    align-content: center;
+    align-items: center;
 }
 .Container .cards{
     /* z-index: 1; */
@@ -37,7 +38,13 @@ body{
     justify-items: center;
     align-items: center;
 }
-
+input{
+    border-radius: none;
+    transition: all ease .3s;
+}
+input:focus{
+    outline: none;
+}
 .Container.active{
    display: none;
 }
@@ -120,6 +127,27 @@ body{
  */
 
  @media screen and (max-width: 1400px) {
+    input{
+        border-radius: 0;
+        height: 50%;
+        width: 40%;
+        background-color: #808c9c;
+        font-size: 16px;
+        border: rgb(41, 41, 41) solid 1px;
+        transition: all ease .3s;
+    }
+    input:focus{
+        outline: none;
+        background-color: rgb(199, 204, 218);
+    }
+    input::placeholder {
+        color: rgb(212, 213, 216);
+        padding-left: 5px;
+        font-size: 16px;
+    }
+    input:focus::placeholder {
+        color: transparent;
+      }
     .Container .cards{
         /* z-index: 1; */
         width: 100%;

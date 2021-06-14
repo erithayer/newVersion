@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './Components/Header/Header'
-import Navbar from './Components/Navbar/Navbar';
-import Main from './Components2/Main';
+// import Header from './Components/Header/Header'
+// import Navbar from './Components/Navbar/Navbar';
+// import Main from './Components2/Main';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Details from './Components2/Details'
 import Login from './Components/Login/Login'
@@ -14,11 +14,11 @@ import {useState, memo} from 'react'
 import Redirect from './Components/RedirectPage/Redirect'
 import Header2 from './Components/Header/Header2'
 // import Loading from './Components/Loading';
-import Erithayer from './Components/Erithayer/Erithayer'
+// import Erithayer from './Components/Erithayer/Erithayer'
 // import Fetch from './Components/Junk/Fetch'
-import Header3 from './Components/Header/Header3';
+// import Header3 from './Components/Header/Header3';
 import MainList from './Components/Main/MainList';
-import Fetch from './Components/Junk/Fetch';
+// import Fetch from './Components/Junk/Fetch';
 
 function App() {
     const [click, setClick] = useState(false) 
@@ -27,7 +27,7 @@ function App() {
       <ScrollToTop />
      <Header2 click={click} setClick = {setClick}/>
      {/* <Header3 /> */}
-     <Navbar2 click={click} setClick = {setClick}/>
+     {/* <Navbar2 click={click} setClick = {setClick}/> */}
      {/* <Fetch /> */}
      
      <Switch>

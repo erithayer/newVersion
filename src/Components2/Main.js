@@ -1,8 +1,8 @@
 import './Main.css'
 import React from 'react'
-import { FaFacebookSquare } from 'react-icons/fa'
-import { FaTwitterSquare } from 'react-icons/fa'
-import { FaInstagramSquare } from 'react-icons/fa'
+// import { FaFacebookSquare } from 'react-icons/fa'
+// import { FaTwitterSquare } from 'react-icons/fa'
+// import { FaInstagramSquare } from 'react-icons/fa'
 import Loading from '../../src/Components/Loading'
 
 

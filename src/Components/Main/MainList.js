@@ -1,11 +1,12 @@
 import './MainList.css'
 import React from 'react'
-import { FaFacebookSquare } from 'react-icons/fa'
-import { FaTwitterSquare } from 'react-icons/fa'
-import { FaInstagramSquare } from 'react-icons/fa'
+// import { FaFacebookSquare } from 'react-icons/fa'
+// import { FaTwitterSquare } from 'react-icons/fa'
+// import { FaInstagramSquare } from 'react-icons/fa'
 import Loading from '../Loading'
-import defImage from '../../images/MAIN.jpg'
-
+// import defImage from '../../images/MAIN.jpg'
+import { NavLink } from 'react-router-dom'
+import logo from '../../images/logo-5.png'
 
 class MainList extends React.PureComponent {
     constructor(){
@@ -15,6 +16,9 @@ class MainList extends React.PureComponent {
             general: [],
             positions: [],
             error: false,
+            searchQuery:'',
+            filteredList: [],
+            scrollNav: false,
         }
     }
 
@@ -43,8 +47,7 @@ class MainList extends React.PureComponent {
                    })
                }
            })
-           console.log(this.state.general.ID) 
-           
+           window.addEventListener('scroll', this.changeNav)
     }
 
     handleCardClick = (item) => {
@@ -62,17 +65,59 @@ class MainList extends React.PureComponent {
     handleDefImage = (ev) => {
         console.log(ev.target.src)
     }
+
+    handleSearch = (event) => {
+        event.target.value = ("" + event.target.value).toLowerCase();
+        const value = event.target.value
+        const filteredThings = this.state.general.filter(item => {
+            return (
+                item.name.includes(value) || item.surname.includes(value)
+            )
+        })
+        this.setState({
+            filteredList:filteredThings,
+            searchQuery: value    
+        })
+        console.log(filteredThings, "filtered")
+
+    }
+    scrollToTop = () => {
+        //   window.scrollTo(0, 0);
+          window.scrollTo({top: 0, behavior: 'smooth'})
+         
+      }    
+      changeNav = () => {
+        if(window.scrollY >= 190) {
+          this.setState({scrollNav: true})
+         } else {
+            this.setState({scrollNav: false})
+        }
+     }
     render(){
         const {click} = this.props
-        const {general, loading, error} = this.state
+        const { general, loading, error,inputValue, searchQuery, filteredList, scrollNav } = this.state
         // console.log(this.state.positions,"positions")
         if(loading){
             return <Loading />
         }
-        console.log(this.state.general, 'general id')
+        if(searchQuery === ''){
         return(
-            <div  className={click ? "Container active" : "Container"}>
-              <div className="cards">
+            
+        
+            <div  className="Container">
+                <nav className="navbar">                     
+                    <div className="nav-container">
+                        <NavLink to="/" onClick={this.scrollToTop} className={scrollNav ? "nav-logo-show" : "nav-logo-hidden"}><img src={logo} alt=""/></NavLink>
+                        <input 
+                        type="text"
+                        onChange={this.handleSearch}
+                        value={this.state.searchQuery}
+                        placeholder="Որոնում"
+                        />
+                    </div>
+                </nav>
+                <div className="cards">
+                  
                 {general.map(item => {
                     return(
                         <div className="card card1" key={item.ID} onClick={()=>this.handleCardClick(item)} >
@@ -91,7 +136,7 @@ class MainList extends React.PureComponent {
                                 {/* <p>{item.sex}</p> */}
                                 <p>{item.positions.map(pItem => {
                                     return(
-                                        <div>{pItem.name}</div>
+                                        <h4>{pItem.name}</h4>
                                     )
                                     
                                 })}</p> 
@@ -105,7 +150,55 @@ class MainList extends React.PureComponent {
                 
             </div>
         </div>
-    )
+    )}else{
+        return(
+            <div  className="Container">
+                <nav className="navbar">                     
+                    <div className="nav-container">
+                        <NavLink to="/" onClick={this.scrollToTop} className={scrollNav ? "nav-logo-show" : "nav-logo-hidden"}><img src={logo} alt=""/></NavLink>
+                        <input 
+                        type="text"
+                        onChange={this.handleSearch}
+                        value={this.state.searchQuery}
+                        className="name-input"
+                        placeholder="Որոնում" />
+                    </div>
+                </nav>
+              <div className="cards">
+                {filteredList.map(item => {
+                    return(
+                        <div className="card card1" key={item.ID} onClick={()=>this.handleCardClick(item)} >
+                            <div className="container">
+                                <img 
+                                    // onError={this.src='../../images.search.png'}
+                                    src={ `https://api.erithay.com/things/${item.ID}/img`} 
+                                    alt="image missing" 
+                                    className="Image"
+                                    // onError={this.handleDefImage}
+                                    
+                                />
+                            </div>                              
+                            <div className="details">
+                                <h3> {item.name} {item.surname}</h3>
+                                {/* <p>{item.sex}</p> */}
+                                <p>{item.positions.map(pItem => {
+                                    return(
+                                        <h4>{pItem.name}</h4>
+                                    )
+                                    
+                                })}</p> 
+                               
+                            </div>
+                            
+                        </div>
+                    )
+                })}
+                
+                
+            </div>
+        </div>
+        )
+    }
         }
         
 }

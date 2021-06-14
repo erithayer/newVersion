@@ -5,18 +5,18 @@ import { useEffect} from 'react'
 // import {handleClick} from '../../Components/Helpers/Helpers' 
 // import menu from '../../images/menu.svg'
 import logo from '../../images/logo-5.png'
-import search from '../../images/search-gray.png'
-
+// import search from '../../images/search-gray.png'
+import Search from '../Search/Search'
 
 function Navbar2 (props) {
     // const [click, setClick] = useState(false)
-    const {click, setClick} = props
-    const handleClick = () => setClick(!click)
+    // const {click, setClick} = props
+    // const handleClick = () => setClick(!click)
     const [scrollNav, setScrollNav] = useState(false)
-    const closeMenu = () => {
-        setClick(false)
-
-    }
+    // const closeMenu = () => {
+    //     setClick(false)
+    // }
+    const [inputValue, setInputValue] = useState("")
      const changeNav = () => {
         if(window.scrollY >= 190) {
           setScrollNav(true)
@@ -34,10 +34,10 @@ function Navbar2 (props) {
      
   }
     return(
-        <nav className="navbar">            
+        <nav className="navbar">                     
             <div className="nav-container">
                 <NavLink to="/" onClick={() => ScrollToTop()} className={scrollNav ? "nav-logo-show" : "nav-logo-hidden"}><img src={logo} alt=""/></NavLink>
-                <ul className={click ? "nav-menu activeNav" : "nav-menu"}>
+                <Search /><ul>
                     {/* <li className="search"><div className="search-div"><input type="text" placeholder="Որոնում"/><img src={search} alt=""/></div></li> */}
                     {/* <li className="nav-item" >
                         <NavLink  
