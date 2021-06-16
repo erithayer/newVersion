@@ -108,12 +108,14 @@ class MainList extends React.PureComponent {
                 <nav className="navbar">                     
                     <div className="nav-container">
                         <NavLink to="/" onClick={this.scrollToTop} className={scrollNav ? "nav-logo-show" : "nav-logo-hidden"}><img src={logo} alt=""/></NavLink>
-                        <input 
-                        type="text"
-                        onChange={this.handleSearch}
-                        value={this.state.searchQuery}
-                        placeholder="Որոնում"
-                        />
+                        <div className="input">
+                            <input 
+                                type="text"
+                                onChange={this.handleSearch}
+                                value={this.state.searchQuery}
+                                placeholder="Որոնում"
+                            />
+                        </div>
                     </div>
                 </nav>
                 <div className="cards">
@@ -156,12 +158,14 @@ class MainList extends React.PureComponent {
                 <nav className="navbar">                     
                     <div className="nav-container">
                         <NavLink to="/" onClick={this.scrollToTop} className={scrollNav ? "nav-logo-show" : "nav-logo-hidden"}><img src={logo} alt=""/></NavLink>
-                        <input 
-                        type="text"
-                        onChange={this.handleSearch}
-                        value={this.state.searchQuery}
-                        className="name-input"
-                        placeholder="Որոնում" />
+                        <div className="input">
+                            <input 
+                                type="text"
+                                onChange={this.handleSearch}
+                                value={this.state.searchQuery}
+                                placeholder="Որոնում"
+                            />
+                        </div>
                     </div>
                 </nav>
               <div className="cards">
